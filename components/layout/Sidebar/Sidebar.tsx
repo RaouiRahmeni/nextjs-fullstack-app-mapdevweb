@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import {
   AiOutlineBarChart,
@@ -15,12 +16,15 @@ import {
   BsSearch,
 } from 'react-icons/bs';
 import { RiDashboardFill } from 'react-icons/ri';
-
+import { UrlObject } from 'url';
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const [submenuOpen, setSubmenuOpen] = useState(false);
-  console.log(submenuOpen);
-
+  const router = useRouter();
+  const handleClick = (href: string | UrlObject) => {
+    // e.preventDefault();
+    router.push(href);
+  };
   const Menus = [
     { title: 'Dashboard' },
     { title: 'Pages', icon: <AiOutlineFileText /> },
@@ -38,7 +42,7 @@ const Sidebar = () => {
     { title: 'Analytics', icon: <AiOutlineBarChart /> },
     { title: 'Index', icon: <AiOutlineMail /> },
     { title: 'Profile', spacing: true, icon: <BsPerson /> },
-    { title: 'Setting', icon: <AiOutlineSetting /> },
+    { title: 'Settings', icon: <AiOutlineSetting /> },
     { title: 'logout', icon: <AiOutlineLogout /> },
   ];
   return (
@@ -54,20 +58,6 @@ const Sidebar = () => {
         size="35"
         onClick={() => setOpen(!open)}
       />
-      {/* <div className="inline-flex">
-        <GiPathDistance
-          className={`bg-amber-300 text-4xl rounded cursor-pointer block float-left mr-2 duration-500 ${
-            open && 'rotate-[360deg]'
-          }`}
-        />
-        <h1
-          className={`text-white origin-left font-medium text-2xl duration-300 ${
-            !open && 'scale-0'
-          }`}
-        >
-          path
-        </h1>
-      </div> */}
       <div
         className={`flex items-center rounded-md bg-gray-500 py-2 ${
           !open ? 'px-2.5' : 'px-4'
@@ -92,9 +82,10 @@ const Sidebar = () => {
             <>
               <li
                 key={i}
-                className={`text-gray-300 text-sm flex justify-start gap-x-4 cursor-pointer p-2 hover:bg-slate-500 rounded-md ${
+                className={`text-gray-300 text-sm flex items-center justify-start gap-x-4 cursor-pointer p-2 hover:bg-slate-500 rounded-md ${
                   menu.spacing ? 'mt-9' : 'mt-2'
                 }`}
+                onClick={() => handleClick(menu.title)}
               >
                 <span className="text-2xl block float-left">
                   {menu.icon ? menu.icon : <RiDashboardFill />}

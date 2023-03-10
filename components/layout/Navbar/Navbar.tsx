@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { AiOutlineCode } from 'react-icons/ai';
-import Dropdown from '../../Dropdowns/UserDropdown';
+import Dropdown from '../../Dropdowns/AvatarDropdown';
 const Navbar = () => {
   const router = useRouter();
   return (
@@ -10,7 +10,7 @@ const Navbar = () => {
           <AiOutlineCode className="text-4xl rounded cursor-pointer block float-left mr-2 duration-500" />
           <h1 className="origin-left flex">code path academy </h1>
         </div>
-        <div className="p-2">
+        <div className="mr-5">
           <Dropdown />
         </div>
       </div>
