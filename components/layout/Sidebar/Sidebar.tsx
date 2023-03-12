@@ -49,10 +49,10 @@ const Sidebar = () => {
     <div
       className={`bg-gray-800 h-100 ${
         open ? 'w-72' : 'w-20'
-      } p-5 pt-8  duration-300 relative`}
+      } p-5 pt-8  duration-300 `}
     >
       <BsArrowLeftShort
-        className={`bg-white text-black-800 text-3xl rounded-full absolute -right-3 top-9 border border-30 border-yellow-400 cursor-pointer ${
+        className={`bg-white text-black-800 text-3xl rounded-full  top-9 border border-30 border-yellow-400 cursor-pointer ${
           !open && 'rotate-180'
         } `}
         size="35"

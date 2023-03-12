@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
 import { UrlObject } from 'url';
 const AvatarDropdown = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const router = useRouter();
   const handleClick = (href: string | UrlObject) => {
     // e.preventDefault();
@@ -23,8 +23,8 @@ const AvatarDropdown = () => {
           <BsChevronDown className={`duration-300 ${open && 'rotate-180'}`} />
         </li>
         {open && (
-          <ul className=" absolute right-0 mr-7 mt-1 bg-blue-500">
-            <li className="text-sm flex justify-start gap-x-4 cursor-pointer p-2 px-5 hover:bg-slate-500 rounded-md">
+          <ul className=" absolute right-0 mr-7 mt-1 bg-amber-400 p-2">
+            <li className="text-sm flex justify-start gap-x-4 cursor-pointer p-2 px-5 hover:bg-amber-300 rounded-md">
               logout
             </li>
           </ul>
