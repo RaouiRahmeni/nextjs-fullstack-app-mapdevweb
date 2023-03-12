@@ -7,7 +7,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar open={open} setOpen={setOpen} />
       <div className="flex">
         <Sidebar />
         <div>{children}</div>

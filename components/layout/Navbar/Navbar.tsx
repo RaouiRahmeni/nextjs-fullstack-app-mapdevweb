@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { AiOutlineCode } from 'react-icons/ai';
 
-const Navbar = () => {
+const Navbar = ({ open, setOpen }) => {
   const router = useRouter();
   return (
     <div className="bg-amber-400">
