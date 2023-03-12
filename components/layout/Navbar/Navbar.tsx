@@ -3,6 +3,7 @@ import { AiOutlineCode } from 'react-icons/ai';
 
 const Navbar = ({ open, setOpen }) => {
   const router = useRouter();
+
   return (
     <div className="bg-amber-400">
       <div className="flex justify-between items-center p-2">

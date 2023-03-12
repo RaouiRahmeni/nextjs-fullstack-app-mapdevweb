@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import Navbar from './Navbar/Navbar';
 import Sidebar from './Sidebar/Sidebar';
 
-const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
-  const [open, setOpen] = useState(true);
+const Layout: FC<{ children: ReactNode }> = ({ children }) => {
+  const [open, setOpen] = useState<boolean>(true);
 
   return (
     <div>

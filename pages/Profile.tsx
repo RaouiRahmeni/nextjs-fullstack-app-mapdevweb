@@ -1,4 +1,8 @@
-const Profile = () => {
+import Layout from 'components/layout/Layout';
+import Image from 'next/image';
+import { CustomNextPage } from 'types';
+
+const Profile: CustomNextPage = () => {
   return (
     <div>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
@@ -6,7 +10,7 @@ const Profile = () => {
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4 flex justify-center">
               <div className="relative">
-                <img
+                <Image
                   alt="...dkaozid"
                   src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                   className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
@@ -80,3 +84,4 @@ const Profile = () => {
 };
 
 export default Profile;
+Profile.Layout = (Page: any) => <Layout>{Page}</Layout>;

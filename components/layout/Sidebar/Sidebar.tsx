@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import {
@@ -16,35 +17,13 @@ import {
   BsSearch,
 } from 'react-icons/bs';
 import { RiDashboardFill } from 'react-icons/ri';
-import { UrlObject } from 'url';
+import style from './Sidebar.module.css';
+
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const router = useRouter();
-  const handleClick = (href: string | UrlObject) => {
-    // e.preventDefault();
-    router.push(href);
-  };
-  const Menus = [
-    { title: 'Dashboard' },
-    { title: 'Pages', icon: <AiOutlineFileText /> },
-    { title: 'Media', spacing: true, icon: <BsFillImageFill /> },
-    {
-      title: 'Projects',
-      icon: <BsReverseLayoutTextWindowReverse />,
-      submenu: true,
-      submenuItems: [
-        { title: 'submenu 1' },
-        { title: 'submenu 2' },
-        { title: 'submenu 3' },
-      ],
-    },
-    { title: 'Analytics', icon: <AiOutlineBarChart /> },
-    { title: 'Index', icon: <AiOutlineMail /> },
-    { title: 'Profile', spacing: true, icon: <BsPerson /> },
-    { title: 'Settings', icon: <AiOutlineSetting /> },
-    { title: 'logout', icon: <AiOutlineLogout /> },
-  ];
+
   return (
     <div
       className={`bg-gray-800 h-100 ${
@@ -64,9 +43,11 @@ const Sidebar = () => {
         }`}
       >
         <BsSearch
-          className={`text-white text-lg block float-left cursor-pointer ${
-            open && 'mr-2'
-          }`}
+          className={classNames(
+            'text-white text-lg block float-left cursor-pointer',
+            open ? 'mr-2' : '',
+            style.link
+          )}
         />
         <input
           type={'search'}
@@ -85,7 +66,7 @@ const Sidebar = () => {
                 className={`text-gray-300 text-sm flex items-center justify-start gap-x-4 cursor-pointer p-2 hover:bg-slate-500 rounded-md ${
                   menu.spacing ? 'mt-9' : 'mt-2'
                 }`}
-                onClick={() => handleClick(menu.title)}
+                onClick={() => router.push(menu.title)}
               >
                 <span className="text-2xl block float-left">
                   {menu.icon ? menu.icon : <RiDashboardFill />}
@@ -125,3 +106,24 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+const Menus = [
+  { title: 'Dashboard' },
+  { title: 'Pages', icon: <AiOutlineFileText /> },
+  { title: 'Media', spacing: true, icon: <BsFillImageFill /> },
+  {
+    title: 'Projects',
+    icon: <BsReverseLayoutTextWindowReverse />,
+    submenu: true,
+    submenuItems: [
+      { title: 'submenu 1' },
+      { title: 'submenu 2' },
+      { title: 'submenu 3' },
+    ],
+  },
+  { title: 'Analytics', icon: <AiOutlineBarChart /> },
+  { title: 'Index', icon: <AiOutlineMail /> },
+  { title: 'Profile', spacing: true, icon: <BsPerson /> },
+  { title: 'Settings', icon: <AiOutlineSetting /> },
+  { title: 'logout', icon: <AiOutlineLogout /> },
+];
