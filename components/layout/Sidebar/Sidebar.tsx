@@ -19,28 +19,24 @@ import {
 import { RiDashboardFill } from 'react-icons/ri';
 import style from './Sidebar.module.css';
 
-const Sidebar = () => {
-  const [open, setOpen] = useState(true);
+const Sidebar = ({ open, setOpen }) => {
+  // const [open, setOpen] = useState(true);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const router = useRouter();
 
   return (
     <div
-      className={`bg-gray-800 h-100 ${
-        open ? 'w-72' : 'w-20'
-      } p-5 pt-8  duration-300 `}
+      className={classNames(
+        'bg-gray-800 h-screen',
+        open ? 'w-60' : 'w-14',
+        'p-2 pt-4  duration-300'
+      )}
     >
-      <BsArrowLeftShort
-        className={`bg-white text-black-800 text-3xl rounded-full  top-9 border border-30 border-yellow-400 cursor-pointer ${
-          !open && 'rotate-180'
-        } `}
-        size="35"
-        onClick={() => setOpen(!open)}
-      />
-      <div
-        className={`flex items-center rounded-md bg-gray-500 py-2 ${
+      {/* <div
+        className={classNames(
+          'flex items-center rounded-md bg-gray-500 py-2',
           !open ? 'px-2.5' : 'px-4'
-        }`}
+        )}
       >
         <BsSearch
           className={classNames(
@@ -48,39 +44,47 @@ const Sidebar = () => {
             open ? 'mr-2' : '',
             style.link
           )}
+          size={24}
+          color="white"
         />
         <input
           type={'search'}
-          className={`text-base bg-transparent w-100 text-white focus:outline-none ${
+          className={classNames(
+            'text-base bg-transparent w-100 text-white focus:outline-none',
             !open && 'hidden'
-          }`}
+          )}
           placeholder="search"
         />
-      </div>
-      <div className="p-5 pl-0">
+      </div> */}
+      <div className="pl-0">
         <ul>
           {Menus.map((menu, i) => (
             <>
               <li
                 key={i}
-                className={`text-gray-300 text-sm flex items-center justify-start gap-x-4 cursor-pointer p-2 hover:bg-slate-500 rounded-md ${
+                className={classNames(
+                  'text-gray-300 text-sm flex items-center justify-start gap-x-4 cursor-pointer p-2 hover:bg-slate-500 rounded-md',
                   menu.spacing ? 'mt-9' : 'mt-2'
-                }`}
+                )}
                 onClick={() => router.push(menu.title)}
               >
                 <span className="text-2xl block float-left">
                   {menu.icon ? menu.icon : <RiDashboardFill />}
                 </span>
                 <span
-                  className={`text-base  font-medium flex-1 duration-300 ${
+                  className={classNames(
+                    'text-base  font-medium flex-1 duration-300',
                     !open && 'scale-0'
-                  }`}
+                  )}
                 >
                   {menu.title}
                 </span>
                 {menu.submenu && open && (
                   <BsChevronDown
-                    className={`duration-300 ${submenuOpen && 'rotate-180'}`}
+                    className={classNames(
+                      'duration-300',
+                      submenuOpen && 'rotate-180'
+                    )}
                     onClick={() => setSubmenuOpen(!submenuOpen)}
                   />
                 )}

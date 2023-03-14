@@ -9,7 +9,7 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
     <div>
       <Navbar open={open} setOpen={setOpen} />
       <div className="flex">
-        <Sidebar />
+        <Sidebar open={open} setOpen={setOpen} />
         <div>{children}</div>
       </div>
     </div>

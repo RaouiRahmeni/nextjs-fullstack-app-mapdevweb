@@ -1,7 +1,7 @@
 import Layout from 'components/layout/Layout';
 import Image from 'next/image';
 import { CustomNextPage } from 'types';
-
+import table from 'assets/table.jpg';
 const Profile: CustomNextPage = () => {
   return (
     <div>
@@ -12,8 +12,10 @@ const Profile: CustomNextPage = () => {
               <div className="relative">
                 <Image
                   alt="...dkaozid"
-                  src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src={table}
                   className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                  width={150}
+                  height={150}
                 />
               </div>
             </div>
