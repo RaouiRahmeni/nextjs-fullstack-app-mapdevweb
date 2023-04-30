@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import boyCoder from 'assets/boyCoder.jpg';
 import classNames from 'classnames';
+
+import { SlClose } from 'react-icons/sl';
 import style from './Register.module.css';
 const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
   if (!showModal) return null;
@@ -20,10 +22,10 @@ const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
       >
         <div className="flex flex-col w-[1000px]">
           <button
-            className="text-white text-xl place-self-end"
+            className="text-white text-xl place-self-end mb-2"
             onClick={() => setShowModal(false)}
           >
-            X
+            <SlClose />
           </button>
           <div className="flex justify-center items-center bg-white p-0 flex-row rounded">
             <div className="w-full p-8">
@@ -35,7 +37,7 @@ const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
                   </p>
                 </div>
                 <form className="w-full max-w-sm">
-                  <div className="border-b border-amber-500 p-2">
+                  <div className="border-b border-lime-500 p-2">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                       htmlFor="first-name"
@@ -49,7 +51,7 @@ const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
                       id="first-name"
                     />
                   </div>
-                  <div className="border-b border-amber-500 p-2">
+                  <div className="border-b border-lime-500 p-2">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                       htmlFor="email"
@@ -63,7 +65,7 @@ const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
                       id="email"
                     />
                   </div>
-                  <div className="border-b border-amber-500 p-2">
+                  <div className="border-b border-lime-500 p-2">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                       htmlFor="password"
@@ -83,7 +85,7 @@ const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
                       Architecto.
                     </p>
                   </div>
-                  <button className=" bg-gray-800 hover:bg-amber-400 text-white hover:text-gray-800 font-bold py-2 px-4 w-full rounded">
+                  <button className=" bg-gray-800 hover:bg-lime-400 text-white hover:text-gray-800 font-bold py-2 px-4 w-full rounded">
                     Get Started !
                   </button>
                 </form>
@@ -96,7 +98,7 @@ const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
                     Already Signed In ?{' '}
                     <button
                       onClick={openOtherModal}
-                      className="text-bold underline text-amber-400"
+                      className="text-bold underline text-lime-400"
                     >
                       Log in{' '}
                     </button>

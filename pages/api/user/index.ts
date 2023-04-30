@@ -6,7 +6,7 @@ import connectMongoose from 'utils/connectMongoose';
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
 
-  await connectMongoose;
+  await connectMongoose
 
   switch (method) {
     case 'GET': {

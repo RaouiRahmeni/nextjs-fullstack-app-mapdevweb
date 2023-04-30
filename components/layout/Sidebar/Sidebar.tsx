@@ -66,7 +66,14 @@ const Sidebar = ({ open, setOpen }) => {
                   'text-gray-300 text-sm flex items-center justify-start gap-x-4 cursor-pointer p-2 hover:bg-slate-500 rounded-md',
                   menu.spacing ? 'mt-9' : 'mt-2'
                 )}
-                onClick={() => router.push(menu.title)}
+                onClick={() => {
+                  if (menu.submenu && open) {
+                    setSubmenuOpen(!submenuOpen);
+                  }
+                  if (!menu.submenu) {
+                    router.push(menu.title);
+                  }
+                }}
               >
                 <span className="text-2xl block float-left">
                   {menu.icon ? menu.icon : <RiDashboardFill />}
@@ -85,7 +92,7 @@ const Sidebar = ({ open, setOpen }) => {
                       'duration-300',
                       submenuOpen && 'rotate-180'
                     )}
-                    onClick={() => setSubmenuOpen(!submenuOpen)}
+                    // onClick={() => }
                   />
                 )}
               </li>
@@ -93,7 +100,7 @@ const Sidebar = ({ open, setOpen }) => {
                 <ul>
                   {menu.submenuItems.map((submenu, i) => (
                     <li
-                      className="text-gray-300 text-sm flex justify-start gap-x-4 cursor-pointer p-2 px-5 hover:bg-slate-500 rounded-md"
+                      className="text-gray-300 text-sm flex justify-start gap-x-4 cursor-pointer p-2 px-5 ml-5 hover:bg-slate-500 rounded-md"
                       key={i}
                     >
                       {submenu.title}

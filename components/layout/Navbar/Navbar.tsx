@@ -1,7 +1,8 @@
 import Register from 'components/auth/Register';
 import { useRouter } from 'next/router';
 import { SiCodecademy } from 'react-icons/si';
-import { BsArrowLeftShort } from 'react-icons/bs';
+import { CiMenuKebab, CiMenuBurger } from 'react-icons/ci';
+import { BsArrowLeftShort, BsCcCircle } from 'react-icons/bs';
 import { FC, ReactNode, useState } from 'react';
 import Login from 'components/auth/Login';
 
@@ -12,17 +13,27 @@ const Navbar = ({ open, setOpen }) => {
 
   return (
     <div className="bg-amber-400">
-      <div className="flex justify-between items-center p-2">
-        <div className="items-center flex">
-          <SiCodecademy className="text-4xl rounded cursor-pointer block float-left mr-2 duration-500" />
-          <h1 className="origin-left flex">code path academy </h1>
-          <BsArrowLeftShort
-            className={`text-black-800 text-3xl rounded-full  top-9 border border-30 border-amber-400 cursor-pointer ${
-              !open && 'rotate-180'
-            } `}
-            size="35"
-            onClick={() => setOpen(!open)}
-          />
+      <div className="flex bg-lime-400 justify-between items-center p-2">
+        <div className="items-center flex ml-5">
+          <div className="items-center flex ml-5">
+            <BsCcCircle className="text-4xl rounded cursor-pointer block float-left mr-2" />
+            <h1 className="origin-left flex">code circle </h1>
+          </div>
+          <div className="items-center flex ml-10">
+            {open ? (
+              <CiMenuBurger
+                className={`text-black-800 text-3xl rounded-full top-9 duration-300 border-amber-400 cursor-pointer`}
+                size="35"
+                onClick={() => setOpen(!open)}
+              />
+            ) : (
+              <CiMenuKebab
+                className={`text-black-800 text-3xl rounded-full top-9 duration-300 border-amber-400 cursor-pointer`}
+                size="35"
+                onClick={() => setOpen(!open)}
+              />
+            )}
+          </div>
         </div>
         <div className="mr-5">{/* <Dropdown /> */}</div>
         <div>

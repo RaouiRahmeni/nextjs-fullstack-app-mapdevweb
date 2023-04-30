@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import girlCoder from 'assets/girlCoder.jpg';
 import classNames from 'classnames';
+import { SlClose } from 'react-icons/sl';
+
 const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
   if (!showLoginModal) return null;
   const openOtherModal = () => {
@@ -19,10 +21,10 @@ const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
       >
         <div className="flex flex-col w-[1000px]">
           <button
-            className="text-white text-xl place-self-end"
+            className="text-white text-xl place-self-end mb-2"
             onClick={() => setShowLoginModal(false)}
           >
-            X
+            <SlClose />
           </button>
           <div className="flex justify-center items-center bg-white p-0 flex-row">
             <div className={classNames('w-full h-full')}>
@@ -40,7 +42,7 @@ const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
                   <h1 className="text-4xl mb-10">Sign into your accont</h1>
                 </div>
                 <form className="w-full max-w-sm">
-                  <div className="border-b border-amber-500 p-2">
+                  <div className="border-b border-lime-500 p-2">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                       htmlFor="email"
@@ -54,7 +56,7 @@ const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
                       id="email"
                     />
                   </div>
-                  <div className="border-b border-amber-500 p-2">
+                  <div className="border-b border-lime-500 p-2">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                       htmlFor="password"
@@ -69,7 +71,7 @@ const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
                     />
                   </div>
 
-                  <button className=" bg-gray-800 hover:bg-amber-400 text-white hover:text-gray-800 font-bold py-2 px-4 w-full rounded">
+                  <button className=" bg-gray-800 hover:bg-lime-400 text-white hover:text-gray-800 font-bold py-2 px-4 mt-5 w-full rounded">
                     Log In
                   </button>
                 </form>
@@ -81,7 +83,7 @@ const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
                     New Here ?
                     <button
                       onClick={openOtherModal}
-                      className="text-bold underline text-amber-400"
+                      className="text-bold underline text-lime-400"
                     >
                       Sign Up{' '}
                     </button>
