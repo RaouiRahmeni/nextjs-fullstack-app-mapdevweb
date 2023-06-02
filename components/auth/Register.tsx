@@ -13,6 +13,8 @@ const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
   const handleClose = (e) => {
     if (e.target.id === 'wrapper') setShowModal(false);
   };
+  console.log();
+
   return (
     <div>
       <div
