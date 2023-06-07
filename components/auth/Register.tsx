@@ -1,10 +1,15 @@
+import React, { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import signupImg from 'assets/signup.png';
 import FormText from 'components/Form/FormText';
-
 import { SlClose } from 'react-icons/sl';
+
+import signupImg from 'assets/signup.png';
 import style from './Register.module.css';
 const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
+  const { data: session, status } = useSession();
+
+  const [loading, setLoading] = useState<boolean>(false);
   if (!showModal) return null;
   const openOtherModal = () => {
     setShowLoginModal(true);
@@ -13,8 +18,6 @@ const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
   const handleClose = (e) => {
     if (e.target.id === 'wrapper') setShowModal(false);
   };
-  console.log();
-
   return (
     <div>
       <div
