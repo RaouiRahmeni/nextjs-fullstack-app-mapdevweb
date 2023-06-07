@@ -2,8 +2,10 @@ import Layout from 'components/layout/Layout';
 import Blobs from 'components/ui/Blobs';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Dashboard from './Dashboard';
+import { CustomNextPage } from 'types';
 
-const Home: NextPage = () => {
+const Home: CustomNextPage = () => {
   return (
     <div>
       <Head>
@@ -17,3 +19,5 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+// Home.Layout = (Page: any) => <Layout>{Page}</Layout>;

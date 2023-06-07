@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import girlCoder from 'assets/girlCoder.jpg';
+import loginImg from 'assets/login.png';
 import classNames from 'classnames';
 import { SlClose } from 'react-icons/sl';
 
@@ -19,20 +19,20 @@ const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
         onClick={handleClose}
         id="wrapper"
       >
-        <div className="flex flex-col w-[1000px]">
+        <div className="flex flex-col w-2/4 h-fit bg-slate-600 p-2 rounded-lg bg-opacity-50">
           <button
-            className="text-white text-xl place-self-end mb-2"
+            className="text-black text-xl place-self-end mb-2 mr-2"
             onClick={() => setShowLoginModal(false)}
           >
             <SlClose />
           </button>
-          <div className="flex justify-center items-center bg-white p-0 flex-row">
-            <div className={classNames('w-full h-full')}>
+          <div className="flex flex-row justify-center items-center bg-white p-0  rounded">
+            <div className="w-full h-full">
               <Image
-                src={girlCoder}
-                className="float-righ p-0 m-0"
-                // height={500}
-                // width={500}
+                src={loginImg}
+                layout="responsive"
+                height={500}
+                width={500}
                 alt=""
               />
             </div>
@@ -42,52 +42,54 @@ const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
                   <h1 className="text-4xl mb-10">Sign into your accont</h1>
                 </div>
                 <form className="w-full max-w-sm">
-                  <div className="border-b border-lime-500 p-2">
+                  <div className="relative my-5">
+                    <input
+                      id="email"
+                      name="email"
+                      type="text"
+                      className="peer h-10 w-full border-b-4 rounded border-lime-500 text-gray-900 placeholder-transparent focus:outline-none focus:border-gray-500"
+                      placeholder="john@doe.com"
+                    />
                     <label
-                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                       htmlFor="email"
+                      className="absolute left-0 -top-3.5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-300 peer-focus:text-sm"
                     >
                       E-mail
                     </label>
-                    <input
-                      className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                      type="email"
-                      placeholder="Jane-Doe@mail.com"
-                      id="email"
-                    />
                   </div>
-                  <div className="border-b border-lime-500 p-2">
-                    <label
-                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="password"
-                    >
-                      Your password
-                    </label>
+                  <div className="relative my-5">
                     <input
-                      className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                      type="password"
-                      placeholder="Jane Doe"
                       id="password"
+                      name="password"
+                      type="text"
+                      className="peer h-10 w-full border-b-4 rounded  border-lime-500 text-gray-900 placeholder-transparent focus:outline-none focus:border-gray-500"
+                      placeholder="john@doe.com"
                     />
+                    <label
+                      htmlFor="password"
+                      className="absolute left-0 -top-3.5 text-gray-300  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-300 peer-focus:text-sm"
+                    >
+                      Password
+                    </label>
                   </div>
 
-                  <button className=" bg-gray-800 hover:bg-lime-400 text-white hover:text-gray-800 font-bold py-2 px-4 mt-5 w-full rounded">
+                  <button className="bg-gray-800 hover:bg-lime-400 text-white hover:text-gray-800 font-bold hover:duration-200 py-2 px-2 w-full rounded-lg">
                     Log In
                   </button>
                 </form>
                 <div>
-                  <p className="text-gray-500 text-sm mt-5 p-2">
+                  <p className="text-gray-500 text-sm my-5">
                     Forgot Password ?
                   </p>
-                  <p>
-                    New Here ?
+                  <div className="flex">
+                    <p>New Here ?</p>
                     <button
                       onClick={openOtherModal}
-                      className="text-bold underline text-lime-400"
+                      className="text-bold underline text-lime-400 ml-2"
                     >
-                      Sign Up{' '}
+                      Sign Up
                     </button>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>

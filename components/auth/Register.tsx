@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import boyCoder from 'assets/boyCoder.jpg';
-import classNames from 'classnames';
+import signupImg from 'assets/signup.png';
+import FormText from 'components/Form/FormText';
 
 import { SlClose } from 'react-icons/sl';
 import style from './Register.module.css';
@@ -22,98 +22,99 @@ const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
         onClick={handleClose}
         id="wrapper"
       >
-        <div className="flex flex-col w-[1000px]">
+        <div className="flex flex-col w-2/4 bg-slate-600 p-2 rounded-lg bg-opacity-50">
           <button
-            className="text-white text-xl place-self-end mb-2"
+            className="text-black text-xl place-self-end mb-2 mr-2"
             onClick={() => setShowModal(false)}
           >
             <SlClose />
           </button>
-          <div className="flex justify-center items-center bg-white p-0 flex-row rounded">
+          <div className="flex flex-row  justify-center items-center bg-white p-0 rounded-lg">
             <div className="w-full p-8">
-              <div>
-                <div className="mb-5">
-                  <h1 className="text-4xl mb-4">Create your accont</h1>
-                  <p className="text-sm text-gray-500">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  </p>
+              <div className="mb-5">
+                <h1 className="text-lg font-bold mb-4">Create your accont</h1>
+                <p className="text-sm text-gray-500">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
+              <form className="w-full max-w-sm">
+                <div className="relative my-5">
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    className="peer h-10 w-full border-b-4 rounded border-lime-500 text-gray-900 placeholder-transparent focus:outline-none focus:border-gray-500"
+                    placeholder="john@doe.com"
+                  />
+                  <label
+                    htmlFor="firstName"
+                    className="absolute left-0 -top-3.5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-300 peer-focus:text-sm"
+                  >
+                    First Name
+                  </label>
                 </div>
-                <form className="w-full max-w-sm">
-                  <div className="border-b border-lime-500 p-2">
-                    <label
-                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="first-name"
-                    >
-                      First Name
-                    </label>
-                    <input
-                      className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                      type="text"
-                      placeholder="Jane Doe"
-                      id="first-name"
-                    />
-                  </div>
-                  <div className="border-b border-lime-500 p-2">
-                    <label
-                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="email"
-                    >
-                      E-mail
-                    </label>
-                    <input
-                      className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                      type="email"
-                      placeholder="Jane-Doe@mail.com"
-                      id="email"
-                    />
-                  </div>
-                  <div className="border-b border-lime-500 p-2">
-                    <label
-                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="password"
-                    >
-                      Your password
-                    </label>
-                    <input
-                      className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                      type="password"
-                      placeholder="Jane Doe"
-                      id="password"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-gray-500 text-sm mt-5 p-2">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Architecto.
-                    </p>
-                  </div>
-                  <button className=" bg-gray-800 hover:bg-lime-400 text-white hover:text-gray-800 font-bold py-2 px-4 w-full rounded">
-                    Get Started !
-                  </button>
-                </form>
+                <div className="relative my-5">
+                  <input
+                    id="email"
+                    name="email"
+                    type="text"
+                    className="peer h-10 w-full border-b-4 rounded border-lime-500 text-gray-900 placeholder-transparent focus:outline-none focus:border-gray-500"
+                    placeholder="john@doe.com"
+                  />
+                  <label
+                    htmlFor="email"
+                    className="absolute left-0 -top-3.5 text-gray-300 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-300 peer-focus:text-sm"
+                  >
+                    E-mail
+                  </label>
+                </div>
+                <div className="relative my-5">
+                  <input
+                    id="password"
+                    name="password"
+                    type="text"
+                    className="peer h-10 w-full border-b-4 rounded  border-lime-500 text-gray-900 placeholder-transparent focus:outline-none focus:border-gray-500"
+                    placeholder="john@doe.com"
+                  />
+                  <label
+                    htmlFor="password"
+                    className="absolute left-0 -top-3.5 text-gray-300  text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-300 peer-focus:text-sm"
+                  >
+                    Password
+                  </label>
+                </div>
                 <div>
-                  <p className="text-gray-500 text-sm mt-5 p-2">
+                  <p className="text-gray-500 text-xs my-5">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Architecto.
                   </p>
-                  <p>
-                    Already Signed In ?{' '}
-                    <button
-                      onClick={openOtherModal}
-                      className="text-bold underline text-lime-400"
-                    >
-                      Log in{' '}
-                    </button>
-                  </p>
+                </div>
+                <button className="bg-gray-800 hover:bg-lime-400 text-white hover:text-gray-800 font-bold hover:duration-200 py-2 px-2 w-full rounded-lg">
+                  Get Started !
+                </button>
+              </form>
+              <div>
+                <p className="text-gray-500 text-xs my-5">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Architecto.
+                </p>
+                <div className="flex">
+                  <p>Already Signed In ?</p>
+                  <button
+                    onClick={openOtherModal}
+                    className="text-bold underline text-lime-400 ml-2"
+                  >
+                    Log in
+                  </button>
                 </div>
               </div>
             </div>
-            <div className={classNames('w-full h-full')}>
+            <div className="w-full h-full">
               <Image
-                src={boyCoder}
-                className="float-righ p-0 m-0"
-                // height={500}
-                // width={500}
+                src={signupImg}
+                layout="responsive"
+                height={500}
+                width={500}
                 alt=""
               />
             </div>
