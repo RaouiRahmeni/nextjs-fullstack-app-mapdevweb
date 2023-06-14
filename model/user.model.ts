@@ -1,6 +1,6 @@
 import mongoose, { Model } from "mongoose";
 
-export const rolesOption = ["Admin", "student"] as const;
+export const rolesOption = ["Admin", "Student"] as const;
 export type IRole = typeof rolesOption[number];
 
 export interface IUser {
@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema<IUser>(
     firstName: { type: String },
     lastName: { type: String },
     phone: { type: String },
-    role: { type: String, enum: rolesOption, default: "student" },
+    role: { type: String, enum: rolesOption, default: "Student" },
     email: { type: String, lowercase: true },
     password: { type: String, select: false },
     isDeleted: { type: Boolean, default: false },

@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   switch (method) {
     case 'GET': {
-      const users = await UserModel.find();
+      const users = await UserModel.find({});
 
       return res.json(users);
     }

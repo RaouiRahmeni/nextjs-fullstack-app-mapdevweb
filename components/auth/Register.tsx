@@ -1,14 +1,38 @@
 import React, { useEffect, useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import FormText from 'components/Form/FormText';
 import { SlClose } from 'react-icons/sl';
+import { useRouter } from 'next/dist/client/router';
+import axios from 'axios';
 
 import signupImg from 'assets/signup.png';
 import style from './Register.module.css';
+
+const schema = yup
+  .object({
+    firstName: yup.string().required('Le prenom est obligatoire'),
+    lastName: yup.string().required('Le nom est obligatoire'),
+    phone: yup.string().required('Le num est obligatoire').length(8),
+    email: yup.string().email().required('Email obligatoire'),
+    password: yup.string().required('Mot de passe obligatoire'),
+  })
+  .required();
+
 const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
   const { data: session, status } = useSession();
-
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
   const [loading, setLoading] = useState<boolean>(false);
   if (!showModal) return null;
   const openOtherModal = () => {
@@ -17,6 +41,24 @@ const Register = ({ showModal, setShowModal, setShowLoginModal }) => {
   };
   const handleClose = (e) => {
     if (e.target.id === 'wrapper') setShowModal(false);
+  };
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+
+      await axios.post('/pages/api/user/index', data);
+      router.replace('/signin');
+
+      setLoading(false);
+    } catch (error) {
+      if (error.response.data.message === 'Email exist')
+        setError('email', {
+          type: 'manual',
+          message: 'Email exist',
+        });
+      setLoading(false);
+      console.log(error);
+    }
   };
   return (
     <div>
