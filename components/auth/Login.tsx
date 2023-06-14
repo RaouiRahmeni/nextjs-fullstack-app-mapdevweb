@@ -1,9 +1,50 @@
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import loginImg from 'assets/login.png';
 import classNames from 'classnames';
 import { SlClose } from 'react-icons/sl';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/dist/client/router';
+
+const schema = yup
+  .object({
+    email: yup.string().email().required('Email obligatoire'),
+    password: yup.string().required('Mot de passe obligatoire'),
+  })
+  .required();
 
 const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
+  const router = useRouter();
+  const callbackUrl = router.query.callbackUrl as string;
+  const { data: session, status } = useSession();
+  const [errorAlert, setErrorAlert] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = async (credentials) => {
+    setLoading(true);
+    console.log(credentials);
+
+    const { error } = await signIn('credentials', {
+      ...credentials,
+      redirect: false,
+    });
+
+    if (!!error) {
+      setErrorAlert(true);
+      setLoading(false);
+      return;
+    }
+  };
   if (!showLoginModal) return null;
   const openOtherModal = () => {
     setShowModal(true);
@@ -73,12 +114,18 @@ const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
                     </label>
                   </div>
 
-                  <button className="bg-gray-800 hover:bg-lime-400 text-white hover:text-gray-800 font-bold hover:duration-200 py-2 px-2 w-full rounded-lg">
+                  <button
+                    type="submit"
+                    className="bg-gray-800 hover:bg-lime-400 text-white hover:text-gray-800 font-bold hover:duration-200 py-2 px-2 w-full rounded-lg"
+                  >
                     Log In
                   </button>
                 </form>
                 <div>
-                  <p className="text-gray-500 text-sm my-5">
+                  <p
+                    className="text-gray-500 text-sm my-5"
+                    onSubmit={handleSubmit(onSubmit)}
+                  >
                     Forgot Password ?
                   </p>
                   <div className="flex">
