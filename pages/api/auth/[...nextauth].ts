@@ -43,11 +43,13 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
         // Configure one or more authentication providers
         providers: [
             CredentialsProviders({
+                id: "Credentials",
                 name: "Credentials",
                 credentials: {
                     email: { label: "email", type: "email" },
                     password: { label: "password", type: "password" },
                 },
+                //@ts-ignore
                 authorize,
             }),
         ],

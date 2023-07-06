@@ -82,7 +82,10 @@ const Login = ({ showLoginModal, setShowLoginModal, setShowModal }) => {
                 <div className="mb-5">
                   <h1 className="text-4xl mb-10">Sign into your accont</h1>
                 </div>
-                <form className="w-full max-w-sm">
+                <form
+                  className="w-full max-w-sm"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
                   <div className="relative my-5">
                     <input
                       id="email"
